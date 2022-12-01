@@ -24,16 +24,11 @@ datagroup: varunikas_DG {
  }
 
 explore: users {
-  sql_always_where: ${orders.created_date} >= '2012-01-01' ;;
-  join: orders {
+  #sql_always_where: ${orders.created_date} >= '2012-01-01' ;;
+  join: order_items {
     view_label: "Customer Purchases"
     relationship: one_to_many
-#    fields: [customers.id, customers.email, orders.user_id, orders.created_date, orders.order_id]
-    sql_on: ${users.id} = ${orders.user_id} ;;
-  }
-  join: order_items {
-    relationship: one_to_many
-    sql_on: ${orders.order_id} = ${order_items.order_id} ;;
+    sql_on: ${users.id} = ${order_items.user_id} ;;
   }
 }
 
